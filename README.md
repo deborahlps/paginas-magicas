@@ -1,3 +1,4 @@
+
 # 📚 PáginasMágicas
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
@@ -10,7 +11,8 @@ Um site fictício de livraria com visual interativo e colorido. O projeto exibe 
 
 Acesse a versão online através do GitHub Pages:
 
-👉 [https://SEU-USUARIO.github.io/paginas-magicas/](https://deborahlps.github.io/paginas-magicas/)
+👉 https://deborahlps.github.io/paginas-magicas/
+(https://deborahlps.github.io/paginas-magicas/)
 
 ---
 
