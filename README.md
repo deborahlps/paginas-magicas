@@ -11,8 +11,8 @@ Um site fictício de livraria com visual interativo e colorido. O projeto exibe 
 
 Acesse a versão online através do GitHub Pages:
 
-👉 https://deborahlps.github.io/paginas-magicas/
-(https://deborahlps.github.io/paginas-magicas/)
+👉[ https://deborahlps.github.io/paginas-magicas/
+(https://deborahlps.github.io/paginas-magicas/)](https://github.com/deborahlps/paginas-magicas.git)
 
 ---
 
