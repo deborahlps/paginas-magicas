@@ -37,7 +37,7 @@ Acesse a versão online através do GitHub Pages:
 ## Contato
 
 Para dúvidas, sugestões ou qualquer contato, envie um email para:
-deborahlps@gmail.com
+deborahlps262@gmail.com
 
 
 Feito com ❤️ Deborah
