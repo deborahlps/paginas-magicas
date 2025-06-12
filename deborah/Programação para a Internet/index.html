@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PáginasMágicas</title>
+    <style>
+        /* fundo gradiente, texto branco, espaçamento e layout flexível--> */
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* título grande com sombra e sem margem. */
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            margin: 0;
+            cursor: default;
+        }
+
+        /*  menu com espaçamento entre links. */
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        /*  links estilizados, mudam cor e borda no hover. */
+        nav a {
+            color: #e0f7fa;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s, border-bottom-color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover,
+        nav a:focus {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        /* footer: fundo gradiente com texto centralizado. */
+        footer {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /*  fonte, cor e fundo padrão. */
+        body {
+            margin: 0;
+            font-family: 'Arial, sans-serif';
+            font-size: 18px;
+            background-color: #ffffff;
+            color: #008B8B;
+        }
+
+        /*  espaçamento interno. */
+        main {
+            padding: 30px;
+        }
+
+        /*  caixa com fundo claro, sombra e bordas arredondadas. */
+        .sobre {
+            padding: 24px;
+            margin: 16px 0;
+            background: #f0f8ff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .sobre h2 {
+            margin-bottom: 12px;
+            color: #005b5b;
+            font-size: 24px;
+        }
+
+        .sobre p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /*  seção centralizada com fundo azul claro. */
+        #autores {
+            padding: 60px 40px;
+            background: #f0f8ff;
+            text-align: center;
+        }
+
+        #autores h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #0e4a61;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .autores-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        /* card com fundo gradiente, sombra e efeito hover. */
+        .autor-card {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            color: #fff;
+            padding: 20px;
+            width: 260px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .autor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .autor-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .autor-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* caixa com gradiente claro, borda colorida e efeito hover. */
+        .contato {
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-left: 6px solid #00bcd4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contato:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .contato h2 {
+            font-size: 1.8rem;
+            color: #007c91;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .dark {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            border-radius: 15px;
+            color: #ffffff;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .dark:hover {
+            transform: scale(1.02);
+        }
+
+        .redes img {
+            width: 30px;
+            margin: 0 5px;
+        }
+
+        .livros {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .livros .carossel {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .livros .slides {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+        }
+
+        .livros .slide {
+            min-width: 50%;
+            flex-shrink: 0;
+        }
+
+
+        .livros .slide img {
+            width: 80%;
+            max-height: 300px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .livros .slide p {
+            margin: 0;
+            font-size: 16px;
+            color: #008B8B;
+        }
+
+        .livros .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .livros .arrow.prev {
+            left: 10px;
+        }
+
+        .livros .arrow.next {
+            right: 10px;
+        }
+
+
+        .tabela table {
+            border-radius: 20px;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background: #f0f8ff;
+        }
+
+        .tabela th,
+        .tabela td {
+            padding: 12px 15px;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .tabela th {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .tabela td {
+            font-size: 16px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tabela tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* efeito hover para as linhas */
+        .tabela tbody tr:hover {
+            background-color: #bbdafa;
+        }
+
+
+        .checkbox-group,
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-item,
+        .radio-item {
+            background-color: #f3f3f3;
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+            user-select: none;
+        }
+
+        .checkbox-item:hover,
+        .radio-item:hover {
+            background-color: #e0f7fa;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 6px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 8px;
+            margin: 5px 0 10px 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+
+        .botao-enviar button {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .botao-enviar button:hover {
+            background-color: #008B8B;
+        }
+
+        .audio-box {
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #1cb5e0);
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 90%;
+            margin: 40px auto;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(28, 181, 224, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .audio-box:hover {
+            transform: scale(1.02);
+        }
+
+        .audio-box h3 {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .audio-box audio {
+            width: 100%;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .titulo-magico {
+            text-align: center;
+            font-size: 24px;
+            color: #cce6ff;
+            text-shadow: 0 0 10px #1cb5e0, 0 0 20px #2a5298;
+            margin-bottom: 20px;
+            animation: brilhoMagico 2s infinite alternate;
+        }
+
+        @keyframes brilhoMagico {
+            from {
+                text-shadow: 0 0 10px #1cb5e0, 0 0 20px #2a5298;
+            }
+
+            to {
+                text-shadow: 0 0 20px #1cb5e0, 0 0 30px #2a5298;
+            }
+        }
+
+        /* Container para centralizar e limitar a largura */
+        .section-video {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            min-height: 90vh;
+            box-sizing: border-box;
+        }
+
+        .titulo-magico {
+            font-family: 'Georgia', serif;
+            color: #f0f8ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+
+
+        .video-magico {
+            width: 90vw;
+            max-width: 900px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.7);
+            border: 3px solid #0059b3;
+            transition: box-shadow 0.3s ease;
+        }
+
+        /* Sutil efeito ao passar o mouse */
+        .video-magico:hover {
+            box-shadow: 0 0 50px rgba(0, 123, 255, 1);
+        }
+
+
+
+        .fundo-brilhante {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #0f172a;
+            animation: brilho-fundo 2s ease-in-out;
+        }
+
+        @keyframes brilho-fundo {
+
+            0%,
+            100% {
+                background-color: #0f172a;
+            }
+
+            50% {
+                background-color: #1cb5e0;
+            }
+        }
+
+        /* Mensagem de boas-vindas */
+        #mensagem-surpresa {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1cb5e0;
+            color: white;
+            font-size: 2rem;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #1cb5e0;
+            animation: aparecer-pular 1.5s ease-out;
+            z-index: 10000;
+        }
+
+        @keyframes aparecer-pular {
+            0% {
+                transform: translateX(-50%) scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>PáginasMágicas</h1>
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#autores">Autores</a>
+            <a href="#livros">Livros</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#avaliacoes">Avaliações</a>
+        </nav>
+    </header>
+    <div class="fundo-brilhante"></div>
+    <div id="mensagem-surpresa">🎉 Bem-vindos ao site! 🎉</div>
+    <main>
+
+        <section id="sobre">
+            <div class="sobre">
+                <h2>Sobre a Livraria</h2>
+                <p>✨ Descubra o encanto de cada página! Na <strong>Páginas Mágicas</strong>, cada livro é uma porta
+                    para novos mundos, ideias e emoções.</p>
+                <p>📚 Visite-nos: <strong>paginasmagicas.com</strong></p>
+                <p>📖 Aberto desde 2025, sempre trazendo histórias encantadas para vocês!</p>
+                <div class="dark">
+                    <p>Venha se encantar por nossos livros encantados!</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="autores">
+            <h2>Nossos Autores</h2>
+            <div class="autores-container">
+                <div class="autor-card">
+                    <h3>Maria Fernandes</h3>
+                    <p>Autora de romances encantadores e histórias mágicas.</p>
+                </div>
+                <div class="autor-card">
+                    <h3>João Silva</h3>
+                    <p>Especialista em fantasia épica e contos emocionantes.</p>
+                </div>
+                <div class="autor-card">
+                    <h3>Clara Luz</h3>
+                    <p>Cria mundos mágicos com personagens inesquecíveis.</p>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <section id="livros">
+            <div class="livros">
+                <h2>Confira nossos títulos</h2>
+                <div class="carossel">
+                    <button class="arrow prev">&#10094;</button>
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="./assets/imagens/A Biblioteca Da Meia-Noite.jpg" alt="A Biblioteca Da Meia-Noite">
+                            <p>A Biblioteca Da Meia-Noite</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/A Garota do Lago.jpg" alt="A Garota do Lago">
+                            <p>A Garota do Lago</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Assassinato Na Família.jpg" alt="Assassinato Na Família">
+                            <p>Assassinato Na Família</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/O Pequeno Príncipe.jpg" alt="O Pequeno Príncipe">
+                            <p>O Pequeno Príncipe</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Um toque de Ruína.jpg" alt="Um toque de Ruína">
+                            <p>Um toque de Ruína</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Verity.jpg" alt="Verity">
+                            <p>Verity</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/A Paciente Silenciosa.jpg" alt="A Paciente Silenciosa">
+                            <p>A Paciente Silenciosa</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/É Assim Que Começa.jpg" alt="É Assim Que Começa">
+                            <p>É Assim Que Começa</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Vidas Secas.jpg" alt="Vidas Secas">
+                            <p>Vidas Secas</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/O Fabricante De Lágrimas.jpg" alt="O Fabricante De Lágrimas">
+                            <p>O Fabricante De Lágrimas</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Minha Culpa.jpg" alt="Minha Culpa">
+                            <p>Minha Culpa</p>
+                        </div>
+                        <div class="slide">
+                            <img src="./assets/imagens/Continência Ao Amor.jpg" alt="Continência Ao Amor">
+                            <p>Continência Ao Amor</p>
+                        </div>
+                    </div>
+                    <button class="arrow next">&#10095;</button>
+                </div>
+            </div>
+        </section><br><br>
+
+        <section id="categorias">
+            <div class="tabela">
+                <table>
+                    <tr>
+                        <th>📚 Imagens</th>
+                        <th>📖 Título</th>
+                        <th>✍️ Autor(a)</th>
+                        <th>🎭 Gênero</th>
+                        <th>🏷️ Preços</th>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/É Assim Que Começa.jpg" alt="É Assim Que Começa"
+                                style="width:50px; height:auto;"></td>
+                        <td>Colleen Hoover</td>
+                        <td>É Assim Que Começa</td>
+                        <td>Romance</td>
+                        <td>59,90</td>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/A Biblioteca Da Meia-Noite.jpg" alt="A Biblioteca da Meia-Noite"
+                                style="width:50px; height:auto;"></td>
+                        <td>A Biblioteca da Meia-Noite</td>
+                        <td>Matt Haig</td>
+                        <td>Ficção, Fantasia, Drama Filosófico</td>
+                        <td>59,90</td>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/A Paciente Silenciosa.jpg" alt="A Paciente Silenciosa"
+                                style="width:50px; height:auto;"></td>
+                        <td>A paciente silenciosa</td>
+                        <td>Alex Michaelides</td>
+                        <td>Thriller Psicológico, Suspense</td>
+                        <td>59,90</td>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/Verity.jpg" alt="Verity" style="width:50px; height:auto;"></td>
+                        <td>Verity</td>
+                        <td>Colleen Hoover</td>
+                        <td>Suspense Psicológico, Romance</td>
+                        <td>41,33</td>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/Vidas Secas.jpg" alt="Vidas Secas"
+                                style="width:50px; height:auto;"></td>
+                        <td>Vidas Secas</td>
+                        <td>Graciliano Ramos</td>
+                        <td> Romance Modernista, Realismo Social</td>
+                        <td>31,61</td>
+                    </tr>
+                    <tr>
+                        <td><img src="./assets/imagens/O Pequeno Príncipe.jpg" alt="O Pequeno Príncipe"
+                                style="width:50px; height:auto;"></td>
+                        <td>O Pequeno Príncipe</td>
+                        <td>Antoine de Saint-Exupéry</td>
+                        <td>Fábula, Literatura Infantil, Filosofia</td>
+                        <td>19,90</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <br><br>
+        <section class="contato" id="avaliacoes">
+            <div class="form">
+                <h2>Fale Conosco</h2>
+                <form onsubmit="enviarMensagem(); return false;">
+                    Nome:<br><input type="text" name="nome" placeholder="seu nome" required><br>
+                    E-mail:<br><input type="email" name="email" placeholder="seu email" required><br>
+
+                    <strong>
+                        <p>Como nos conheceu?</p>
+                    </strong>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="Internet"> Internet</div>
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="Instagram"> Instagram
+                        </div>
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="Indicação"> Indicação
+                        </div>
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="Facebook"> Facebook</div>
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="Anuncio"> Anúncio</div>
+                        <div class="checkbox-item"><input type="checkbox" name="origem" value="TikTok"> TikTok</div>
+                    </div>
+
+                    <strong>
+                        <p>Qual seu livro favorito?</p>
+                    </strong>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="livro" value="Romance"> Romance</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="Fantasia"> Fantasia</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="ficção científica"> Ficção
+                            Científica</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="terror"> Terror</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="suspense"> Suspense</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="infantis"> Infantis</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="livros didáticos"> Livros
+                            didáticos</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="livros de autoajuda"> Livros de
+                            autoajuda</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="HQs, Mangás e Graphic Novels">
+                            HQs, Mangás e Graphic Novels</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="Livros religiosos"> Livros
+                            religiosos</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="Literatura de gênero">
+                            Literatura de gênero</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="Ciência"> Ciência</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="História"> História</div>
+                        <div class="radio-item"><input type="radio" name="livro" value="Biografias"> Biografias</div>
+                    </div>
+
+                    <br>
+                    <strong>Avalie nosso ambiente:<br></strong>
+                    <input type="range" min="0" max="10"><br><br>
+
+                    <strong>Comentários:<br></strong>
+                    <textarea name="mensagem" placeholder="Digite sua mensagem" rows="4"></textarea><br>
+
+                    <div class="botao-enviar">
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <div class="audio-box">
+        <h3>🎵 Escute o som ambiente da nossa biblioteca</h3>
+        <audio controls>
+            <source src="./assets/audio/loop-file-positive-and-gentle-piano-song-157353.mp3" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+    </div>
+    <section class="section-video">
+        <h3 class="titulo-magico">💫 A Magia Começa com Uma Página...</h3>
+        <video class="video-magico" controls>
+            <source src="./assets/vídeo/vídeo magico.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeo.
+        </video>
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2025 PáginasMágicas - Todos os direitos reservados.
+            <img src="https://img.icons8.com/?size=100&id=w4ObPlgV8yzD&format=png&color=000000" alt="livros" width="30"
+                height="20">
+        </p>
+        <div class="redes">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+            <a href="https://www.whatsapp.com" target="_blank">
+                <img src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000" alt="WhatsApp">
+            </a>
+            <a href="https://www.tiktok.com" target="_blank">
+                <img src="https://img.icons8.com/?size=100&id=118638&format=png&color=000000" alt="TikTok">
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function enviarMensagem() {
+            alert('Obrigado por entrar em contato com PáginasMágicas');
+        }
+
+        // Mensagem desaparece após 3 segundos
+        setTimeout(() => {
+            const msg = document.getElementById('mensagem-surpresa');
+            msg.remove();
+        }, 3000);
+
+        // Confete azul ao carregar
+        setTimeout(() => {
+            confetti({
+                particleCount: 120,
+                spread: 100,
+                origin: { y: 0.4 },
+                colors: ['#1cb5e0', '#008B8B', '#87CEFA']
+            });
+        }, 800);
+
+
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+        const prev = document.querySelector('.arrow.prev');
+        const next = document.querySelector('.arrow.next');
+
+        let currentIndex = 0;
+        const slideWidth = slide[0].clientWidth;
+
+        function updateCarousel() {
+            slides.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        prev.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slide.length - 2; // Volta ao penúltimo slide (último par visível)
+            }
+            updateCarousel();
+        });
+
+        next.addEventListener('click', () => {
+            if (currentIndex < slide.length - 2) { // Para mostrar dois slides por vez
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', () => {
+            updateCarousel(); // reajusta caso a tela mude de tamanho
+        });
+
+    </script>
+
+</body>
+
+</html>
